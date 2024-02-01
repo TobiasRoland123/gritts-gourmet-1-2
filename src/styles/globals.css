@@ -1,33 +1,77 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  --primary-color: #f3f8d8;
+  --secondary-color: #141414;
+  --accent-color: #99565e;
+
+  color: var(--secondary-color);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+h1 {
+  font-family: 'Lora', serif;
+  font-size: 47px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+
+  @media (min-width: 768px) {
+    font-size: 90px;
   }
+}
+
+h2 {
+  font-family: 'Lora', serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  @media (min-width: 768px) {
+    font-size: 67px;
+  }
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 33px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  @media (min-width: 768px) {
+    font-size: 50px;
+  }
+}
+
+h4 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  @media (min-width: 768px) {
+    font-size: 28px;
+  }
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--primary-color);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.container,
+.tainer {
+  @apply mx-auto w-full max-w-screen-2xl px-6;
+  @apply md:px-10 lg:px-16 xl:px-20;
 }
