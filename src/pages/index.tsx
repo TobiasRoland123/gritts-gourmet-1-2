@@ -1,13 +1,12 @@
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import Navigation from '@/components/Navigation/Navigation';
-
-const inter = Inter({ subsets: ['latin'] });
+import HeroFrontpage from '@/modules/HeroFrontpage/HeroFrontpage';
+import { HeroFrontpageMock } from '@/modules/HeroFrontpage/HeroFrontpage.mock';
+import React from 'react';
 
 export default function Home() {
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
   return (
-    <div>
-      <Navigation />
-    </div>
+    <>
+      <HeroFrontpage {...HeroFrontpageMock} />
+    </>
   );
 }

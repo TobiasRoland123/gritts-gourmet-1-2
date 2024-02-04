@@ -1,32 +1,86 @@
 import Image from 'next/image';
 import Logo from '../../../public/logo.svg';
 import { Fade as Hamburger } from 'hamburger-react';
-
 import React from 'react';
+import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
-export default function Navigation() {
+interface NavigationProps {
+  navItems?: Array<{ page: { name: string; path: string } }>;
+}
+
+function Navigation({ navItems }: NavigationProps) {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
+
+  console.log(navItems);
+
   return (
     <>
-      <nav className='flex justify-between items-center px-4 py-2'>
-        <a
-          aria-label={'logo'}
-          href='./'
-        >
-          <Image
-            src={Logo}
-            alt={'logo'}
-            width={50}
-            height={50}
-          />
-        </a>
+      <header className='max-w-screen overflow-hidden'>
+        <nav className='flex justify-between sticky z-10 py-2 px-4 max-w-screen-xl mx-auto items-center'>
+          <a
+            aria-label={'link til forsiden'}
+            href='./'
+          >
+            <Image
+              src={Logo}
+              alt={'logo'}
+              width={80}
+              height={80}
+              className=' w-14 md:w-20'
+            />
+          </a>
 
-        <Hamburger
-          toggled={isOpen}
-          toggle={setIsOpen}
-          color='#141414'
-        />
-      </nav>
+          <div className='lg:hidden'>
+            <Sheet
+              open={isOpen}
+              onOpenChange={setIsOpen}
+            >
+              <SheetTrigger>
+                <Hamburger
+                  toggled={isOpen}
+                  toggle={setIsOpen}
+                  color='#141414'
+                  rounded
+                />
+              </SheetTrigger>
+              <SheetContent className='bg-primaryCol md:w-1/3'>
+                <SheetDescription>
+                  <ul className='flex  flex-col justify-between items-center gap-12 mt-16 md:mt-20'>
+                    {navItems?.map((item, index) => (
+                      <li
+                        key={index}
+                        className='first:mt-8'
+                      >
+                        <a
+                          href={item.page.path}
+                          className='px-4 py-2 text-gray-800'
+                        >
+                          {item.page.name}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </SheetDescription>
+              </SheetContent>
+            </Sheet>
+          </div>
+
+          <ul className='hidden lg:flex '>
+            {navItems?.map((item, index) => (
+              <li key={index}>
+                <a
+                  href={item.page.path}
+                  className='px-4 py-2 text-gray-800'
+                >
+                  {item.page.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </header>
     </>
   );
 }
+
+export default Navigation;
