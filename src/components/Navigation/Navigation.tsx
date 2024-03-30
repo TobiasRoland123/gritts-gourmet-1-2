@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Logo from '../../../public/logo.svg';
+import Logo from '../../public/logo.svg';
 import { Fade as Hamburger } from 'hamburger-react';
 import React from 'react';
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';

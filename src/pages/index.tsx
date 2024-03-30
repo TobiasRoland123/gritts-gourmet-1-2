@@ -6,7 +6,8 @@ export default function Home() {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   return (
     <>
-      <HeroFrontpage {...HeroFrontpageMock} />
+
+        <HeroFrontpage {...HeroFrontpageMock} />
     </>
   );
 }

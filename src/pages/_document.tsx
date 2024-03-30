@@ -9,6 +9,10 @@ export default function Document() {
           href='https://fonts.googleapis.com'
         />
         <link
+          rel='icon'
+          href='../public/favicon.svg'
+        />
+        <link
           rel='preconnect'
           href='https://fonts.gstatic.com'
         />
