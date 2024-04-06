@@ -2,52 +2,52 @@ import HeroFrontpage from '@/modules/HeroFrontpage/HeroFrontpage';
 import { HeroFrontpageMock } from '@/modules/HeroFrontpage/HeroFrontpage.mock';
 import { log } from 'console';
 import React from 'react';
-
-// ########API KEYS ############
-/* const url =
-  'https://cdn.contentful.com/spaces/uf7we2b8oizk/environments/master/entries/1fLEYQN6QvUEOalSVSA2gZ?access_token=r3RuRAJjJ4E4HAnisuF47UC5ZnuZJxVSYX1esDkI-iM';
-
-const fetchApi = async (url: string) => {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error('Error');
-
-    const data = response.json();
-
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-}; */
+import placeholder_img from '@/public/mock/placeholder.jpg';
 
 const data = fetch(
-  'https://cdn.contentful.com/spaces/uf7we2b8oizk/environments/master/entries/1fLEYQN6QvUEOalSVSA2gZ?access_token=r3RuRAJjJ4E4HAnisuF47UC5ZnuZJxVSYX1esDkI-iM'
+  'https://cdn.contentful.com/spaces/uf7we2b8oizk/environments/master/entries/?access_token=kVFfwfbCEfsK0RdCiJswuaNhyOYj4SkH54G-nODPxnw'
 )
   .then((response) => response.json())
   .then((data) => {
-    return data.fields;
+    return data;
   });
 
 export default function Home() {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const [newData, setNewData] = React.useState<any>([]);
+  const [fields, setFields] = React.useState<any>([]);
+  const [assets, setAssets] = React.useState<any>([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
 
-  const myData = async () => {
+  const getData = async () => {
     const a = await data;
     console.log(a);
-    setNewData(a);
-    return a;
+    setFields(a.items[0].fields);
+    setAssets(a.includes.Asset);
+    setIsLoading(false);
   };
 
-  myData();
+  getData();
+
+  const logAssets = () => {
+    console.log(`https:${assets[1]?.fields.file.url}`);
+  };
 
   return (
     <>
       <HeroFrontpage
-        {...HeroFrontpageMock}
-        headline={newData.headline}
+        {...fields}
+        image={
+          isLoading
+            ? { srcMobile: placeholder_img, srcDesktop: placeholder_img, alt: 'test' }
+            : {
+                srcMobile: `https:${assets[0]?.fields.file.url}`,
+                srcDesktop: `https:${assets[1]?.fields.file.url}`,
+                alt: 'test',
+              }
+        }
       />
+
+      <button onClick={logAssets}>Log assets</button>
     </>
   );
 }
