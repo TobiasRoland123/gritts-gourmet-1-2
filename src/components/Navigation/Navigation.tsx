@@ -11,7 +11,7 @@ interface NavigationProps {
 function Navigation({ navItems }: NavigationProps) {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
-  console.log(navItems);
+  /* console.log(navItems); */
 
   return (
     <>
