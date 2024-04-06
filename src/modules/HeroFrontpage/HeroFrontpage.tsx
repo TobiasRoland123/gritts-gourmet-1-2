@@ -35,6 +35,7 @@ const HeroFrontpage = ({ headline, specialWord, description, button, image }: He
               src={image.srcMobile}
               alt={'Hero billede' || image.alt}
               width={760}
+              height={800}
               quality={50}
             />
           ) : null}
@@ -44,6 +45,7 @@ const HeroFrontpage = ({ headline, specialWord, description, button, image }: He
               src={image.srcDesktop}
               alt={'Hero billede' || image.alt}
               width={800}
+              height={800}
               quality={90}
             />
           ) : null}
