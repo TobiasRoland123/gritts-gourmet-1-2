@@ -34,8 +34,7 @@ const HeroFrontpage = ({ headline, specialWord, description, button, image }: He
               className='col-start-1 row-start-1  md:hidden'
               src={image.srcMobile}
               alt={'Hero billede' || image.alt}
-              width={800}
-              height={800}
+              width={760}
               loading='lazy'
             />
           ) : null}
@@ -45,7 +44,6 @@ const HeroFrontpage = ({ headline, specialWord, description, button, image }: He
               src={image.srcDesktop}
               alt={'Hero billede' || image.alt}
               width={800}
-              height={800}
               loading='lazy'
             />
           ) : null}
