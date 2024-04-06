@@ -44,7 +44,7 @@ const HeroFrontpage = ({ headline, specialWord, description, button, image }: He
               src={image.srcDesktop}
               alt={'Hero billede' || image.alt}
               width={800}
-              quality={50}
+              quality={90}
             />
           ) : null}
 
