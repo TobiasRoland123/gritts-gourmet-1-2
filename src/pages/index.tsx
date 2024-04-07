@@ -4,9 +4,13 @@ import { log } from 'console';
 import React from 'react';
 import placeholder_img from '@/public/mock/placeholder.jpg';
 
-const url = `https://cdn.contentful.com/spaces/uf7we2b8oizk/environments/master/entries/?access_token=kVFfwfbCEfsK0RdCiJswuaNhyOYj4SkH54G-nODPxnw`;
+const url = `https://cdn.contentful.com/spaces/uf7we2b8oizk/environments/master/entries`;
 
-const data = fetch(url)
+const data = fetch(url, {
+  headers: {
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN}`,
+  },
+})
   .then((response) => response.json())
   .then((data) => {
     return data;

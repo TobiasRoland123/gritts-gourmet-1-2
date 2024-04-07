@@ -12,6 +12,7 @@
     "@radix-ui/react-dialog": "^1.0.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "dotenv": "^16.4.5",
     "hamburger-react": "^2.5.0",
     "hyphen": "^1.10.4",
     "lucide-react": "^0.321.0",
@@ -20,7 +21,8 @@
     "react-dom": "^18",
     "react-hyphen": "^1.4.0",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/hyphen": "^1.6.7",
