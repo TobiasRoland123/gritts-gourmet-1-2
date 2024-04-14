@@ -3,18 +3,13 @@ import { HeroFrontpageMock } from '@/modules/HeroFrontpage/HeroFrontpage.mock';
 import { log } from 'console';
 import React from 'react';
 import placeholder_img from '@/public/mock/placeholder.jpg';
+import fetchData from '../api/fetchData';
 
-const url = `https://cdn.contentful.com/spaces/uf7we2b8oizk/environments/master/entries`;
+const baseUrl = 'https://cdn.contentful.com/spaces/uf7we2b8oizk/environments/master/';
 
-const data = fetch(url, {
-  headers: {
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN}`,
-  },
-})
-  .then((response) => response.json())
-  .then((data) => {
-    return data;
-  });
+const entry_id = 'entries/1fLEYQN6QvUEOalSVSA2gZ';
+const url = `${baseUrl}${entry_id}`;
+const data = fetchData({ url });
 
 export default function Home() {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
@@ -25,22 +20,25 @@ export default function Home() {
   const getData = async () => {
     const a = await data;
     console.log(a);
-    setFields(a.items[0].fields);
-    setAssets(a.includes.Asset);
+    setFields(a.fields);
+    /*  setAssets(a.includes.Asset); */
     setIsLoading(false);
   };
 
   getData();
 
-  const logAssets = () => {
-    console.log(`https:${assets[1]?.fields.file.url}`);
-  };
+  const assetUrls = fields?.image?.map((image: any) => {
+    return `assets/${image.sys.id}`;
+  });
+
+  const images = async () => await fetchData(assetUrls[0]);
 
   return (
     <>
       <HeroFrontpage
         {...fields}
-        image={
+        image={{ srcMobile: placeholder_img, srcDesktop: placeholder_img, alt: 'test' }}
+        /*  image={
           isLoading
             ? { srcMobile: placeholder_img, srcDesktop: placeholder_img, alt: 'test' }
             : {
@@ -48,10 +46,10 @@ export default function Home() {
                 srcDesktop: `https:${assets[1]?.fields.file.url}`,
                 alt: 'test',
               }
-        }
+        } */
       />
 
-      <button onClick={logAssets}>Log assets</button>
+      {/* <button onClick={logAssets}>Log assets</button> */}
     </>
   );
 }
