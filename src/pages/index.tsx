@@ -1,10 +1,11 @@
 import HeroFrontpage from '@/modules/HeroFrontpage/HeroFrontpage';
 import { HeroFrontpageMock } from '@/modules/HeroFrontpage/HeroFrontpage.mock';
-import { log } from 'console';
 import React from 'react';
 import placeholder_img from '@/public/mock/placeholder.jpg';
 import fetchData from '../api/fetchData';
 import fetchAssets from '@/api/fetchAssets';
+import { RecipeCarousel } from '@/modules/RecipeCarousel/RecipeCarousel';
+import { RecipeCarouselMock } from '@/modules/RecipeCarousel/RecipeCarouselMock';
 
 const baseUrl = 'https://cdn.contentful.com/spaces/uf7we2b8oizk/environments/master/';
 
@@ -54,6 +55,7 @@ export default function Home() {
         {...fields}
         image={{ srcMobile: assets[0], srcDesktop: assets[1], alt: 'test' }}
       />
+      <RecipeCarousel {...RecipeCarouselMock} />
     </>
   );
 }
