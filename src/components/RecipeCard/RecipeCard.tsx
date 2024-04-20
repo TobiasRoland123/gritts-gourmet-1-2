@@ -6,7 +6,7 @@ type RecipeCardProps = RecipeViewModel & {};
 
 export const RecipeCard = ({ title, description, totalTime, workTime, freezable, splashImage }: RecipeCardProps) => {
   return (
-    <article className={cn('max-w-[264px] rounded-lg bg-accentCol overflow-hidden mx-5')}>
+    <article className={cn('max-w-[264px] rounded-lg bg-accentCol overflow-hidden')}>
       {splashImage ? (
         <Image
           src={splashImage}

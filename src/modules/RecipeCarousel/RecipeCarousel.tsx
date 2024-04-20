@@ -8,7 +8,7 @@ export function RecipeCarousel({ title, recipes }: RecipeCarouselViewModel) {
   return (
     <Carousel className=' mt-9'>
       <div>
-        <CarouselContent>
+        <CarouselContent className='pl-4 mr-4'>
           {recipes?.map((recipe, index) => {
             return (
               <CarouselItem key={index}>
