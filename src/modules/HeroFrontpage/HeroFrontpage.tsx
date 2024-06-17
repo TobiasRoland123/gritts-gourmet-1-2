@@ -37,6 +37,7 @@ const HeroFrontpage = ({ headline, specialWord, description, button, image }: He
               width={760}
               height={800}
               quality={50}
+              priority={true}
             />
           ) : null}
           {image.srcDesktop ? (
@@ -47,6 +48,7 @@ const HeroFrontpage = ({ headline, specialWord, description, button, image }: He
               width={800}
               height={800}
               quality={90}
+              priority={true}
             />
           ) : null}
 

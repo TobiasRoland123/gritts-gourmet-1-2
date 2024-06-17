@@ -44,23 +44,21 @@ function Navigation({ navItems }: NavigationProps) {
                 />
               </SheetTrigger>
               <SheetContent className='bg-primaryCol md:w-1/3'>
-                <SheetDescription>
-                  <ul className='flex  flex-col justify-between items-center gap-12 mt-16 md:mt-20'>
-                    {navItems?.map((item, index) => (
-                      <li
-                        key={index}
-                        className='first:mt-8'
+                <ul className='flex  flex-col justify-between items-center gap-12 mt-16 md:mt-20'>
+                  {navItems?.map((item, index) => (
+                    <li
+                      key={index}
+                      className='first:mt-8'
+                    >
+                      <a
+                        href={item.page.path}
+                        className='px-4 py-2 text-gray-800'
                       >
-                        <a
-                          href={item.page.path}
-                          className='px-4 py-2 text-gray-800'
-                        >
-                          {item.page.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </SheetDescription>
+                        {item.page.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </SheetContent>
             </Sheet>
           </div>
