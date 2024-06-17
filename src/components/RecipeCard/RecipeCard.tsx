@@ -19,7 +19,7 @@ export const RecipeCard = ({ title, description, totalTime, workTime, freezable,
         'missing image'
       )}
       <div className='px-3 py-4 '>
-        {title ? <h3 className=' text-primaryCol truncate'>{title}</h3> : null}
+        {title ? <h3 className=' text-primaryCol truncate text-2xl md:text-3xl'>{title}</h3> : null}
         {description ? <p className='text-primaryCol mt-5 line-clamp-5'>{description}</p> : null}
         <div className='mt-6 flex justify-between'>
           {totalTime ? (

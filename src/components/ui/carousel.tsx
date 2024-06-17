@@ -159,7 +159,7 @@ const CarouselItem = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLD
       ref={ref}
       role='group'
       aria-roledescription='slide'
-      className={cn('  shrink-0 ', orientation === 'horizontal' ? 'pl-4' : 'pt-4', className)}
+      className={cn('  shrink-0 ', orientation === 'horizontal' ? 'pl-4 first-of-type:pl-0' : 'pt-4', className)}
       {...props}
     />
   );
@@ -176,7 +176,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
         variant={variant}
         size={size}
         className={cn(
-          '  h-8 w-8 rounded-full',
+          'rounded-full hover:bg-transparrent',
 
           className
         )}
@@ -184,7 +184,11 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
         onClick={scrollPrev}
         {...props}
       >
-        <ArrowLeft className={'size-4'} />
+        <ArrowLeft
+          size={80}
+          color='#99565E'
+          strokeWidth={1}
+        />
         <span className='sr-only'>Previous slide</span>
       </Button>
     );
@@ -202,7 +206,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
         variant={variant}
         size={size}
         className={cn(
-          'h-8 w-8 rounded-full',
+          'rounded-full hover:bg-transparrent',
 
           className
         )}
@@ -210,7 +214,11 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
         onClick={scrollNext}
         {...props}
       >
-        <ArrowRight className='size-4' />
+        <ArrowRight
+          size={80}
+          color='#99565E'
+          strokeWidth={1}
+        />
         <span className='sr-only'>Next slide</span>
       </Button>
     );
