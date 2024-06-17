@@ -1,6 +1,6 @@
 import HeroFrontpage from '@/modules/HeroFrontpage/HeroFrontpage';
 import { HeroFrontpageMock } from '@/modules/HeroFrontpage/HeroFrontpage.mock';
-import React from 'react';
+import React, { useEffect } from 'react';
 import placeholder_img from '@/public/mock/placeholder.jpg';
 import fetchData from '../api/fetchData';
 import fetchAssets from '@/api/fetchAssets';
@@ -24,7 +24,7 @@ export default function Home() {
 
   const getData = async () => {
     const a = await data;
-    // console.log(a);
+    console.log('gatData Data:', a);
     setFields(a.fields);
     /*  setAssets(a.includes.Asset); */
     setIsLoading(false);
@@ -45,9 +45,10 @@ export default function Home() {
     setIsLoading(false);
   };
 
-  getData();
-
-  getAssets();
+  useEffect(() => {
+    getData();
+    getAssets();
+  }, []);
 
   return (
     <>
