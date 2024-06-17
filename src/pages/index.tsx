@@ -24,9 +24,7 @@ export default function Home() {
 
   const getData = async () => {
     const a = await data;
-    console.log('gatData Data:', a);
     setFields(a.fields);
-    /*  setAssets(a.includes.Asset); */
     setIsLoading(false);
   };
 
