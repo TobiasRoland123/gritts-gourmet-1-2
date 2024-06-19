@@ -28,11 +28,10 @@ export function RecipeCarousel({ title, recipes }: RecipeCarouselViewModel) {
   return (
     <Carousel
       setApi={setApi}
-      /* className=' mt-9 md:mt-14 pl-6 md:pl-10 lg:pl-16' */
       className=' mt-9 md:mt-14 '
     >
-      <div>
-        <CarouselContent className='ml-6 md:ml-10 lg:ml-16 md:flex md:justify-between mr-4'>
+      <div className='flex justify-center'>
+        <CarouselContent className='ml-6 md:ml-10 lg:ml-16 mr-4 xl:mr-0 xl:ml-auto  '>
           {recipes?.map((recipe, index) => {
             if (index >= 4) {
               return null;
@@ -46,7 +45,7 @@ export function RecipeCarousel({ title, recipes }: RecipeCarouselViewModel) {
         </CarouselContent>
       </div>
 
-      <div className='flex container justify-between mt-7'>
+      <div className='flex container justify-between mt-7 xl:hidden'>
         <CarouselPrevious className='border-accentCol border-2 bg-transparrent' />
         <div className='flex items-center gap-2'>
           {recipes &&
