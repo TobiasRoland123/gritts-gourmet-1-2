@@ -31,7 +31,7 @@ export function RecipeCarousel({ title, recipes }: RecipeCarouselViewModel) {
       className=' mt-9 md:mt-14 '
     >
       <div className='flex justify-center'>
-        <CarouselContent className='ml-6 md:ml-10 lg:ml-16 mr-4 xl:mr-0 xl:ml-auto  '>
+        <CarouselContent className='ml-6 md:ml-10 lg:ml-16 mr-4 xl:mr-0 xl:ml-auto'>
           {recipes?.map((recipe, index) => {
             if (index >= 4) {
               return null;
