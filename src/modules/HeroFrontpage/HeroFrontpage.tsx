@@ -32,7 +32,7 @@ const HeroFrontpage = ({ headline, specialWord, description, button, image }: He
           {image.srcMobile ? (
             <Image
               className='col-start-1 row-start-1  md:hidden'
-              src={image.srcMobile}
+              src={`https:${image.srcMobile}`}
               alt={'Hero billede' || image.alt}
               width={760}
               height={800}
@@ -43,7 +43,7 @@ const HeroFrontpage = ({ headline, specialWord, description, button, image }: He
           {image.srcDesktop ? (
             <Image
               className='hidden md:block col-start-1 row-start-1  md:col-start-4 md:col-end-9 md:row-start-1'
-              src={image.srcDesktop}
+              src={`https:${image.srcDesktop}`}
               alt={'Hero billede' || image.alt}
               width={800}
               height={800}

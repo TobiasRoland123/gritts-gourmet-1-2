@@ -1,5 +1,5 @@
-import React from "react";
-import { hyphenate } from "../../../utils/hyphenation";
+import React from 'react';
+import { hyphenate } from '../../utils/hyphenation';
 
 interface HyphenatedTextProps {
   text?: string;

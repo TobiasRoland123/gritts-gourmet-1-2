@@ -1,4 +1,10 @@
 import Navigation from '@/components/Navigation/Navigation';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: "Gritt's Gourmet | Opskrifter og madlavningstips",
+  description: 'Gritt’s Gourmet er en madblog med opskrifter og madlavningstips. Find inspiration til din næste ret her',
+};
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
