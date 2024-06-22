@@ -1,4 +1,5 @@
 import Navigation from '@/components/Navigation/Navigation';
+import Footer from '@/components/Footer/Footer';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,6 +10,10 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <span
+        className='hidden'
+        id='top'
+      ></span>
       <Navigation
         navItems={[
           { page: { name: 'opskrifter', path: '../pages/opskrifter' } },
@@ -16,6 +21,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         ]}
       />
       <main>{children}</main>
+
+      <Footer />
     </>
   );
 }

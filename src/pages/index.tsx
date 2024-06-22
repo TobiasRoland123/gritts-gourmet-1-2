@@ -1,12 +1,9 @@
 import HeroFrontpage from '@/modules/HeroFrontpage/HeroFrontpage';
 import React from 'react';
 import { RecipeCarousel } from '@/modules/RecipeCarousel/RecipeCarousel';
-import { RecipeCarouselMock } from '@/modules/RecipeCarousel/RecipeCarouselMock';
 import { fetchEntries } from '../utils/contentFullPage';
 import { fetchAssets } from '../utils/getAssets';
-const baseUrl = 'https://cdn.contentful.com/spaces/uf7we2b8oizk/environments/master/';
 import { Metadata } from 'next';
-import { Description } from '@radix-ui/react-dialog';
 import { RecipeViewModel } from '@/view-models/RecipeViewModel';
 
 export const metadata: Metadata = {
@@ -65,16 +62,12 @@ export async function getStaticProps() {
   const modules = entries?.module || [];
 
   const recipeCarouselRawData = modules.find((module: any) => module.sys.contentType.sys.id === 'featuredRecipes').fields;
-  console.log('recipeCarouselRawData', recipeCarouselRawData);
-
   const recipeIds = recipeCarouselRawData.recipe.map((recipe: any) => recipe.sys.id);
 
   const fetchRecipes = async (ids: string[]) => {
     const recipes = await Promise.all(
       ids.map(async (id) => {
         const recipe = await fetchEntries({ id });
-        console.log('internal recipe', recipe);
-
         const splashImageUrl = await fetchAssets({ id: recipe.billede.sys.id });
 
         return {
