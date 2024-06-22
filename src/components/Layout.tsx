@@ -10,10 +10,6 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <span
-        className='hidden'
-        id='top'
-      ></span>
       <Navigation
         navItems={[
           { page: { name: 'opskrifter', path: '../pages/opskrifter' } },

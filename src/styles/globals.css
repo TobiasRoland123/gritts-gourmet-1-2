@@ -82,7 +82,7 @@
   --primary-color: #f3f8d8;
   --secondary-color: #141414;
   --accent-color: #99565e;
-
+  scroll-behavior: smooth;
   color: var(--secondary-color);
 }
 

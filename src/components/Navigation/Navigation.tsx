@@ -15,7 +15,10 @@ function Navigation({ navItems }: NavigationProps) {
 
   return (
     <>
-      <header className='max-w-screen overflow-hidden'>
+      <header
+        className='max-w-screen overflow-hidden'
+        id='top'
+      >
         <nav className='flex justify-between sticky z-10 py-2 px-4 max-w-screen-xl mx-auto items-center'>
           <a
             aria-label={'link til forsiden'}

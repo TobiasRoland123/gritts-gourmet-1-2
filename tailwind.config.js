@@ -14,6 +14,7 @@ module.exports = {
     extend: {
       fontFamily: {
         amatic: ['"Amatic SC"', 'cursive'], // Add this line
+        roboto: ['"Roboto"', 'sans-serif'], // Add this line
       },
       colors: {
         // Define your color variables here
