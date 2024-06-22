@@ -65,6 +65,8 @@ export async function getStaticProps() {
   const modules = entries?.module || [];
 
   const recipeCarouselRawData = modules.find((module: any) => module.sys.contentType.sys.id === 'featuredRecipes').fields;
+  console.log('recipeCarouselRawData', recipeCarouselRawData);
+
   const recipeIds = recipeCarouselRawData.recipe.map((recipe: any) => recipe.sys.id);
 
   const fetchRecipes = async (ids: string[]) => {
@@ -77,7 +79,8 @@ export async function getStaticProps() {
 
         return {
           title: recipe.title,
-          description: recipe.fremgangsmetode,
+          description: recipe.beskrivelse,
+          howTo: recipe.fremgangsmetode,
           totalTime: recipe.tidIAlt,
           workTime: recipe.tilberedningstid,
           freezable: recipe.fryseegnet,

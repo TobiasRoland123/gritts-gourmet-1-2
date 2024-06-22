@@ -5,7 +5,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 type RecipeCardProps = RecipeViewModel & {};
 
-export const RecipeCard = ({ title, description, totalTime, workTime, freezable, splashImage }: RecipeCardProps) => {
+export const RecipeCard = ({ title, description, howTo, totalTime, workTime, freezable, splashImage }: RecipeCardProps) => {
   return (
     <article className={cn('max-w-[264px] md:max-w-[300px]  rounded-lg bg-accentCol overflow-hidden')}>
       {splashImage ? (
@@ -21,7 +21,7 @@ export const RecipeCard = ({ title, description, totalTime, workTime, freezable,
       )}
       <div className='px-3 py-4 '>
         {title ? <h3 className=' text-primaryCol truncate text-2xl md:text-3xl'>{title}</h3> : null}
-        {description ? <div className='text-primaryCol mt-5 line-clamp-5'>{documentToReactComponents(description)};</div> : null}
+        {description ? <p className='text-primaryCol mt-5 line-clamp-5'>{description};</p> : null}
         <div className='mt-6 flex justify-between'>
           {totalTime ? (
             <div>
