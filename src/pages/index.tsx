@@ -1,77 +1,100 @@
 import HeroFrontpage from '@/modules/HeroFrontpage/HeroFrontpage';
-import { HeroFrontpageMock } from '@/modules/HeroFrontpage/HeroFrontpage.mock';
-import React, { useEffect } from 'react';
-import placeholder_img from '@/public/mock/placeholder.jpg';
-import fetchData from '../api/fetchData';
-import fetchAssets from '@/api/fetchAssets';
+import React from 'react';
 import { RecipeCarousel } from '@/modules/RecipeCarousel/RecipeCarousel';
 import { RecipeCarouselMock } from '@/modules/RecipeCarousel/RecipeCarouselMock';
 import { fetchEntries } from '../utils/contentFullPage';
+import { fetchAssets } from '../utils/getAssets';
 const baseUrl = 'https://cdn.contentful.com/spaces/uf7we2b8oizk/environments/master/';
 import { Metadata } from 'next';
+import { Description } from '@radix-ui/react-dialog';
+import { RecipeViewModel } from '@/view-models/RecipeViewModel';
 
 export const metadata: Metadata = {
-  title: 'Invoices | Acme Dashboard',
+  title: "Gritt's Gourmet | Forside",
 };
 
 interface HomeProps {
   pageName: string;
   modules: any;
+  recipes: RecipeViewModel[];
 }
 
 export default function Home({ ...props }: HomeProps) {
-  // const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  // const [modules, setFields] = React.useState<any>([]);
-  // const [assets, setAssets] = React.useState<any>([]);
-  // const [isLoading, setIsLoading] = React.useState<boolean>(true);
-
   console.log('props', props);
+  const { pageName, modules, recipes } = props;
 
-  const { pageName, modules } = props;
-  const frontPageHeroData = modules.find((module: any) => module.sys.contentType.sys.id === 'heroFrontpage');
+  if (modules.length === 0) return null;
+  const frontPageHeroData = modules.find((module: any) => module.sys.contentType.sys.id === 'heroFrontpage').fields;
 
-  console.log('frontPageHeroData', frontPageHeroData);
+  const recipeCarouselRawData = modules.find((module: any) => module.sys.contentType.sys.id === 'featuredRecipes').fields;
+
+  const recipeCarouselData = {
+    title: recipeCarouselRawData.title,
+    recipes: recipes,
+  };
+
+  console.log('recipeCarouselData cleaned', recipeCarouselData);
 
   return (
     <>
-      <h1>{pageName}</h1>
-
       <button
         onClick={() => {
           console.log('clicked');
-
-          fetchEntries({ url: '25j0x4RNIhW84GaGHmetP7' });
+          console.log('recipeCarouselData', recipeCarouselData);
         }}
       >
         click me
       </button>
       <HeroFrontpage
-        {...frontPageHeroData.fields}
+        {...frontPageHeroData}
         image={{
-          srcMobile: frontPageHeroData.fields.image.find((img: any) => img.fields.title === 'herofrontpage-mobile').fields.file
-            .url,
-          srcDesktop: frontPageHeroData.fields.image.find((img: any) => img.fields.title === 'herofrontpage-desktop').fields.file
-            .url,
+          srcMobile: frontPageHeroData.image.find((img: any) => img.fields.title === 'herofrontpage-mobile').fields.file.url,
+          srcDesktop: frontPageHeroData.image.find((img: any) => img.fields.title === 'herofrontpage-desktop').fields.file.url,
         }}
       />
-      <RecipeCarousel {...RecipeCarouselMock} />
+      <RecipeCarousel {...recipeCarouselData} />
     </>
   );
 }
 
 export async function getStaticProps() {
-  const entries = await fetchEntries({ url: '25j0x4RNIhW84GaGHmetP7' });
+  const entries = await fetchEntries({ id: '25j0x4RNIhW84GaGHmetP7' });
   console.log('getStatic entries', entries);
 
   const pageName = entries?.titel || 'Page';
   const modules = entries?.module || [];
 
-  /*  const fields = data.map((item: any) => item.fields);
-  console.log('fields', fields); */
+  const recipeCarouselRawData = modules.find((module: any) => module.sys.contentType.sys.id === 'featuredRecipes').fields;
+  const recipeIds = recipeCarouselRawData.recipe.map((recipe: any) => recipe.sys.id);
+
+  const fetchRecipes = async (ids: string[]) => {
+    const recipes = await Promise.all(
+      ids.map(async (id) => {
+        const recipe = await fetchEntries({ id });
+        console.log('internal recipe', recipe);
+
+        const splashImageUrl = await fetchAssets({ id: recipe.billede.sys.id });
+
+        return {
+          title: recipe.title,
+          description: recipe.fremgangsmetode,
+          totalTime: recipe.tidIAlt,
+          workTime: recipe.tilberedningstid,
+          freezable: recipe.fryseegnet,
+          splashImage: splashImageUrl,
+        };
+      })
+    );
+    return recipes;
+  };
+
+  const recipes = await fetchRecipes(recipeIds);
+
   return {
     props: {
-      pageName: pageName,
-      modules: modules,
+      pageName,
+      modules,
+      recipes,
     },
   };
 }

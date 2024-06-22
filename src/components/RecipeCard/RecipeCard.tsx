@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils';
 import { RecipeViewModel } from '@/view-models/RecipeViewModel';
 import Image from 'next/image';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 type RecipeCardProps = RecipeViewModel & {};
 
@@ -9,7 +10,7 @@ export const RecipeCard = ({ title, description, totalTime, workTime, freezable,
     <article className={cn('max-w-[264px] md:max-w-[300px]  rounded-lg bg-accentCol overflow-hidden')}>
       {splashImage ? (
         <Image
-          src={splashImage}
+          src={`https:${splashImage}`}
           alt={'test'}
           width={500}
           height={500}
@@ -20,7 +21,7 @@ export const RecipeCard = ({ title, description, totalTime, workTime, freezable,
       )}
       <div className='px-3 py-4 '>
         {title ? <h3 className=' text-primaryCol truncate text-2xl md:text-3xl'>{title}</h3> : null}
-        {description ? <p className='text-primaryCol mt-5 line-clamp-5'>{description}</p> : null}
+        {description ? <p className='text-primaryCol mt-5 line-clamp-5'>{documentToReactComponents(description)};</p> : null}
         <div className='mt-6 flex justify-between'>
           {totalTime ? (
             <div>

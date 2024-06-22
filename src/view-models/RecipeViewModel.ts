@@ -1,6 +1,6 @@
 export interface RecipeViewModel {
   title?: string;
-  description?: string;
+  description?: any;
   totalTime?: string;
   workTime?: string;
   freezable?: boolean;

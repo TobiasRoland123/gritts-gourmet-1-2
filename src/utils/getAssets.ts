@@ -9,14 +9,14 @@ type fetchEntryProps = {
   id: string;
 };
 
-export async function fetchEntries({ id }: fetchEntryProps) {
+export async function fetchAssets({ id }: fetchEntryProps) {
   /*   const response = await client.getContentTypes();
-   */ const entries = await client.getEntry(id);
+   */ const asset = await client.getAsset(id);
 
   /*   console.log('response', response);
-   */ console.log('entries', entries);
+   */ console.log('entries', asset);
 
-  if (entries.fields) return entries.fields;
+  if (asset.fields) return asset.fields.file.url;
 }
 
-export default fetchEntries;
+export default fetchAssets;
