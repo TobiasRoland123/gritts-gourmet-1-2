@@ -34,14 +34,6 @@ export default function Home({ ...props }: HomeProps) {
 
   return (
     <>
-      <button
-        onClick={() => {
-          console.log('clicked');
-          console.log('recipeCarouselData', recipeCarouselData);
-        }}
-      >
-        click me
-      </button>
       <HeroFrontpage
         {...frontPageHeroData}
         image={{
