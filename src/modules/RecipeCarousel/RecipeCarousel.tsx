@@ -28,7 +28,7 @@ export function RecipeCarousel({ title, recipes }: RecipeCarouselViewModel) {
   return (
     <>
       {title && (
-        <div className='container'>
+        <div className='container mt-6 md:mt-10'>
           <h2>{title}</h2>
         </div>
       )}
