@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import fetchAssets from '@/utils/getAssets';
 import { RecipeViewModel } from '@/view-models/RecipeViewModel';
 import RecipeSearch from '@/components/RecipeSearch/ResipeSearch';
+import RecipeCategorySearch from '@/components/RecipeCategorySearch/RecipeCategorySearch';
 
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([] as any[]);
@@ -36,6 +37,9 @@ const RecipeList = () => {
         splashImage: fields.billede.fields.file.url,
         totalTime: fields.tidIAlt,
         workTime: fields.tilberedningstid,
+        DinnerType: fields.mltidstype,
+        skillLevel: fields.svrhedsgrad,
+        MealType: fields.kosttype,
       } as RecipeViewModel;
     });
 
@@ -47,8 +51,12 @@ const RecipeList = () => {
 
   return (
     <section className='container'>
-      <div>
+      <div className='flex  mt-6 md:mt-10 flex-wrap gap-6'>
         <RecipeSearch
+          recipes={originalCleanedRecipes}
+          setCleanedRecipes={setCleanedRecipes}
+        />
+        <RecipeCategorySearch
           recipes={originalCleanedRecipes}
           setCleanedRecipes={setCleanedRecipes}
         />

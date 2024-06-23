@@ -40,7 +40,7 @@ export const RecipeCard = ({ title, description, howTo, totalTime, workTime, fre
                   />
                 </svg>
 
-                <p className='text-primaryCol font-semibold'>{totalTime}</p>
+                <p className='text-primaryCol font-semibold'>{totalTime} min</p>
               </div>
             </div>
           ) : null}
@@ -61,7 +61,7 @@ export const RecipeCard = ({ title, description, howTo, totalTime, workTime, fre
                   />
                 </svg>
 
-                <p className='text-primaryCol font-semibold'>{workTime}</p>
+                <p className='text-primaryCol font-semibold'>{workTime} min</p>
               </div>
             </div>
           ) : null}

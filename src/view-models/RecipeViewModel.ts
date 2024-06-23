@@ -6,4 +6,7 @@ export interface RecipeViewModel {
   workTime?: string;
   freezable?: boolean;
   splashImage?: string;
+  DinnerType?: string;
+  skillLevel?: string;
+  MealType?: string;
 }

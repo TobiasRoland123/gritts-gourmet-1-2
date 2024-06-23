@@ -1,5 +1,8 @@
 import { RecipeViewModel } from '@/view-models/RecipeViewModel';
 import { useEffect, useState } from 'react';
+import { Input } from '../Input/Input';
+import { TextField } from '@radix-ui/themes';
+import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 
 type RecipeSearchProps = {
   recipes: RecipeViewModel[];
@@ -21,21 +24,43 @@ const RecipeSearch = ({ recipes, setCleanedRecipes }: RecipeSearchProps) => {
       return;
     }
     const filteredRecipes = recipes?.filter((recipe) => {
-      return recipe?.title?.toLowerCase().includes(searchString.toLowerCase());
+      if (recipe?.title?.toLowerCase().includes(searchString.toLowerCase())) {
+        return recipe;
+      } else if (recipe?.DinnerType?.toLowerCase().includes(searchString.toLowerCase())) {
+        return recipe;
+      } else if (recipe?.MealType?.toLowerCase().includes(searchString.toLowerCase())) {
+        return recipe;
+      }
     });
 
     setCleanedRecipes(filteredRecipes);
-  }, [searchString]);
+  }, [searchString, recipes, setCleanedRecipes]);
 
   return (
-    <div className='flex flex-col max-w-72'>
-      <label htmlFor='recipeSearch'>Søg</label>
-      <input
-        type='text'
+    <div className='flex flex-col max-w-72 mx-auto md:mx-0'>
+      <label
+        htmlFor='recipeSearch'
+        className='hidden'
+        aria-label='Søg efter opskrift...'
+      >
+        Søg
+      </label>
+
+      <TextField.Root
+        variant='soft'
         id='recipeSearch'
-        placeholder='Søg efter opskrift...'
         onChange={handleSearch}
-      />
+        className='bg-accentCol text-primaryCol placeholder:text-primaryCol h-10'
+      >
+        <TextField.Slot>
+          <MagnifyingGlassIcon
+            className='text-primaryCol'
+            height='16'
+            width='16'
+          />
+          <p className={`text-primaryCol opacity-70 text-sm ${searchString !== '' && 'hidden'}`}>Søg efter opskrifter....</p>
+        </TextField.Slot>
+      </TextField.Root>
     </div>
   );
 };
