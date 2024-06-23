@@ -58,7 +58,7 @@ const RecipeSearch = ({ recipes, setCleanedRecipes }: RecipeSearchProps) => {
             height='16'
             width='16'
           />
-          <p className={`text-primaryCol opacity-70  ${searchString !== '' && 'hidden'}`}>Søg efter opskrifter....</p>
+          {/* <p className={`text-primaryCol opacity-70  ${searchString !== '' && 'hidden'}`}>Søg efter opskrifter....</p> */}
         </TextField.Slot>
       </TextField.Root>
     </div>
