@@ -11,10 +11,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navigation
-        navItems={[
-          { page: { name: 'opskrifter', path: '../pages/opskrifter' } },
-          { page: { name: 'Om Gritt', path: '../pages/om-gritt' } },
-        ]}
+        navItems={[{ page: { name: 'opskrifter', path: '/opskrifter' } }, { page: { name: 'Om Gritt', path: '/om-gritt' } }]}
       />
       <main>{children}</main>
 

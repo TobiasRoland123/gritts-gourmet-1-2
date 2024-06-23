@@ -9,9 +9,9 @@ export const HeroFrontpageMock = {
   button: { text: 'Se opskrifter', href: '/opskrifter' },
   image: {
     //@ts-ignore
-    srcMobile: { ...heroFrontPageMobile },
+    srcMobile: '//via.placeholder.com/760x800',
     //@ts-ignore
-    srcDesktop: { ...heroFrontPageDesktop },
+    srcDesktop: '//via.placeholder.com/800x800',
 
     alt: 'Hero Frontpage Image Alt',
   },
