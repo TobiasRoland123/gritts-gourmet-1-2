@@ -1,7 +1,7 @@
 import Hero from '@/modules/HeroFrontpage/HeroFrontpage';
 import { HeroFrontpageMock } from '@/modules/HeroFrontpage/HeroFrontpage.mock';
 import RecipeList from '@/modules/RecipeList/RecipeList';
-import fetchEntries from '@/utils/contentFullPage';
+import { fetchEntries } from '@/utils/contentFullPage';
 
 interface RecipesProps {
   pageName: string;

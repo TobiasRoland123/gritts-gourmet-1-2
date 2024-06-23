@@ -14,7 +14,8 @@ export async function fetchAssets({ id }: fetchEntryProps) {
    */ const asset = await client.getAsset(id);
 
   /*   console.log('response', response);
-   */ console.log('entries', asset);
+   */
+  // console.log('entries', asset);
 
   if (asset.fields) return asset.fields.file.url;
 }

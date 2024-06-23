@@ -5,19 +5,20 @@ const client = require('contentful').createClient({
   accessToken: accessToken,
 });
 
-type fetchEntryProps = {
-  id: string;
+type fetchEntryByTypeProps = {
+  type: string;
 };
 
-export async function fetchEntries({ id }: fetchEntryProps) {
+export async function fetchEntriesByType({ type }: fetchEntryByTypeProps) {
   /*   const response = await client.getContentTypes();
-   */ const entries = await client.getEntry(id);
+   */
+  const entries = await client.getEntries({ content_type: type });
 
   /*   console.log('response', response);
    */
-  // console.log('entries', entries);
+  console.log('entries', entries);
 
-  if (entries.fields) return entries.fields;
+  if (entries.items) return entries.items;
 }
 
-export default fetchEntries;
+export default fetchEntriesByType;
