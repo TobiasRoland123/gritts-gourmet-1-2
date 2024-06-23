@@ -50,7 +50,7 @@ const RecipeSearch = ({ recipes, setCleanedRecipes }: RecipeSearchProps) => {
         variant='soft'
         id='recipeSearch'
         onChange={handleSearch}
-        className='bg-accentCol text-primaryCol placeholder:text-primaryCol h-10'
+        className='bg-accentCol text-primaryCol placeholder:text-primaryCol h-10 font-[16px]'
       >
         <TextField.Slot>
           <MagnifyingGlassIcon
