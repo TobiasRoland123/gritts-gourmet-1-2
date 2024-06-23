@@ -9,6 +9,7 @@ import RecipeSearch from '@/components/RecipeSearch/ResipeSearch';
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([] as any[]);
   const [cleanedRecipes, setCleanedRecipes] = useState([] as RecipeViewModel[]);
+  const [originalCleanedRecipes, setOriginalCleanedRecipes] = useState([] as RecipeViewModel[]);
 
   const getRecipes = async () => {
     const recipes = await fetchEntriesByType({ type: 'recipe' });
@@ -39,6 +40,7 @@ const RecipeList = () => {
     });
 
     setCleanedRecipes(cleanedRecipes);
+    setOriginalCleanedRecipes(cleanedRecipes);
   }, [recipes]);
 
   console.log('cleanedRecipes', cleanedRecipes);
@@ -46,7 +48,10 @@ const RecipeList = () => {
   return (
     <section className='container'>
       <div>
-        <RecipeSearch />
+        <RecipeSearch
+          recipes={originalCleanedRecipes}
+          setCleanedRecipes={setCleanedRecipes}
+        />
       </div>
       <ul className='mt-6 md:mt-10 flex flex-col gap-8 md:flex-row md:flex-wrap md:justify-around lg:justify-between'>
         {cleanedRecipes?.map((recipe, index) => (

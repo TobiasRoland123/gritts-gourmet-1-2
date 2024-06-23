@@ -6,7 +6,7 @@ type RecipeSearchProps = {
   setCleanedRecipes: (recipes: RecipeViewModel[]) => void;
 };
 
-const RecipeSearch = () => {
+const RecipeSearch = ({ recipes, setCleanedRecipes }: RecipeSearchProps) => {
   const [searchString, setSearchString] = useState('');
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,6 +15,16 @@ const RecipeSearch = () => {
 
   useEffect(() => {
     console.log('searchString', searchString);
+
+    if (!searchString) {
+      setCleanedRecipes(recipes);
+      return;
+    }
+    const filteredRecipes = recipes?.filter((recipe) => {
+      return recipe?.title?.toLowerCase().includes(searchString.toLowerCase());
+    });
+
+    setCleanedRecipes(filteredRecipes);
   }, [searchString]);
 
   return (
