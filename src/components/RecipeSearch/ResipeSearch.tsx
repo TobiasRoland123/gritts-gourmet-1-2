@@ -45,22 +45,12 @@ const RecipeSearch = ({ recipes, setCleanedRecipes }: RecipeSearchProps) => {
       >
         Søg
       </label>
-
-      <TextField.Root
-        variant='soft'
+      <Input
         id='recipeSearch'
+        placeholder='Søg efter opskrifter....'
         onChange={handleSearch}
         className='bg-accentCol text-primaryCol placeholder:text-primaryCol h-10 font-[16px]'
-      >
-        <TextField.Slot>
-          <MagnifyingGlassIcon
-            className='text-primaryCol'
-            height='16'
-            width='16'
-          />
-          {/* <p className={`text-primaryCol opacity-70  ${searchString !== '' && 'hidden'}`}>Søg efter opskrifter....</p> */}
-        </TextField.Slot>
-      </TextField.Root>
+      />
     </div>
   );
 };
