@@ -151,3 +151,15 @@ body {
   @apply mx-auto w-full max-w-screen-2xl px-6;
   @apply md:px-10 lg:px-16 xl:px-20;
 }
+
+.recipe_splash {
+  background: transparent;
+}
+.recipe_splash > img {
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  height: 380px;
+  object-fit: cover;
+  max-height: 45svh;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1.099899) 71.5%, rgba(0, 0, 0, 0) 100%);
+}

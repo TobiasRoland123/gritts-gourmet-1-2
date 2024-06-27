@@ -1,4 +1,5 @@
 export interface RecipeViewModel {
+  id?: string;
   title?: string;
   description?: string;
   howTo?: any;
@@ -9,4 +10,5 @@ export interface RecipeViewModel {
   DinnerType?: string;
   skillLevel?: string;
   MealType?: string;
+  ingredients?: string[];
 }

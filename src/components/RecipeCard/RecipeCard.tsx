@@ -5,9 +5,12 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 type RecipeCardProps = RecipeViewModel & {};
 
-export const RecipeCard = ({ title, description, howTo, totalTime, workTime, freezable, splashImage }: RecipeCardProps) => {
+export const RecipeCard = ({ title, description, howTo, totalTime, workTime, freezable, splashImage, id }: RecipeCardProps) => {
   return (
-    <article className={cn('max-w-[264px] md:max-w-[300px]  rounded-lg bg-accentCol overflow-hidden')}>
+    <a
+      href={id ? `opskrifter/${id}` : '#'}
+      className={cn('max-w-[264px] md:max-w-[300px]  rounded-lg bg-accentCol overflow-hidden block')}
+    >
       {splashImage ? (
         <Image
           src={`https:${splashImage}`}
@@ -67,7 +70,7 @@ export const RecipeCard = ({ title, description, howTo, totalTime, workTime, fre
           ) : null}
         </div>
       </div>
-    </article>
+    </a>
   );
 };
 
