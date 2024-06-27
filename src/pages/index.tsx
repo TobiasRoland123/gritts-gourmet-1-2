@@ -70,7 +70,7 @@ export async function getStaticProps() {
           workTime: recipe.tilberedningstid,
           freezable: recipe.fryseegnet,
           splashImage: splashImageUrl,
-          id: recipe.sys.id,
+          id: id,
         };
       })
     );
