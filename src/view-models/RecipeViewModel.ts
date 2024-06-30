@@ -11,4 +11,5 @@ export interface RecipeViewModel {
   skillLevel?: string;
   MealType?: string;
   ingredients?: string[];
+  onRecipePage?: boolean;
 }

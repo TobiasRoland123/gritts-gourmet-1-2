@@ -51,7 +51,7 @@ function Navigation({ navItems }: NavigationProps) {
                   {navItems?.map((item, index) => (
                     <li
                       key={index}
-                      className='first:mt-8'
+                      className='first:mt-8 list-none'
                     >
                       <a
                         href={item.page.path}
@@ -66,9 +66,12 @@ function Navigation({ navItems }: NavigationProps) {
             </Sheet>
           </div>
 
-          <ul className='hidden lg:flex '>
+          <ul className='hidden lg:flex'>
             {navItems?.map((item, index) => (
-              <li key={index}>
+              <li
+                key={index}
+                className='list-none'
+              >
                 <a
                   href={item.page.path}
                   className='px-4 py-2 text-gray-800'

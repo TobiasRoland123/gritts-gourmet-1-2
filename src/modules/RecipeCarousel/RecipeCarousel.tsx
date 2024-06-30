@@ -4,10 +4,8 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { RecipeCarouselViewModel } from './RecipeCarouselViewModel';
 import { RecipeCard } from '@/components/RecipeCard/RecipeCard';
 import { type CarouselApi } from '@/components/ui/carousel';
-import { log } from 'console';
-import { Dot } from 'lucide-react';
 
-export function RecipeCarousel({ title, recipes }: RecipeCarouselViewModel) {
+export function RecipeCarousel({ title, recipes, smallTitle, onRecipePage = false }: RecipeCarouselViewModel) {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
   const [count, setCount] = React.useState(0);
@@ -28,8 +26,8 @@ export function RecipeCarousel({ title, recipes }: RecipeCarouselViewModel) {
   return (
     <>
       {title && (
-        <div className='container mt-6 md:mt-10'>
-          <h2>{title}</h2>
+        <div className='container mt-6 md:mt-16'>
+          <h2 className={cn(smallTitle && 'text-5xl')}>{title}</h2>
         </div>
       )}
 
@@ -45,7 +43,10 @@ export function RecipeCarousel({ title, recipes }: RecipeCarouselViewModel) {
               }
               return (
                 <CarouselItem key={index}>
-                  <RecipeCard {...recipe} />
+                  <RecipeCard
+                    {...recipe}
+                    onRecipePage={onRecipePage}
+                  />
                 </CarouselItem>
               );
             })}

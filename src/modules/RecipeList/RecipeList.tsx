@@ -61,7 +61,7 @@ const RecipeList = () => {
           setCleanedRecipes={setCleanedRecipes}
         />
       </div>
-      <ul className='mt-6 md:mt-10 flex flex-col gap-8 md:flex-row md:flex-wrap md:justify-around lg:justify-between'>
+      <ul className='mt-6 md:mt-10 flex flex-col gap-8 md:flex-row md:flex-wrap md:justify-around lg:justify-between list-none'>
         {cleanedRecipes?.map((recipe, index) => (
           <li
             key={`recipe-${index}`}

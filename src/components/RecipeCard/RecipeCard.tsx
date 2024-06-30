@@ -5,10 +5,20 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 type RecipeCardProps = RecipeViewModel & {};
 
-export const RecipeCard = ({ title, description, howTo, totalTime, workTime, freezable, splashImage, id }: RecipeCardProps) => {
+export const RecipeCard = ({
+  title,
+  description,
+  howTo,
+  totalTime,
+  workTime,
+  freezable,
+  splashImage,
+  id,
+  onRecipePage,
+}: RecipeCardProps) => {
   return (
     <a
-      href={id ? `opskrifter/${id}` : '#'}
+      href={id ? (onRecipePage ? `${id}` : `opskrifter/${id}`) : '#'}
       className={cn('max-w-[264px] md:max-w-[300px]  rounded-lg bg-accentCol overflow-hidden block')}
     >
       {splashImage ? (
@@ -17,6 +27,7 @@ export const RecipeCard = ({ title, description, howTo, totalTime, workTime, fre
           alt={'test'}
           width={300}
           height={300}
+          quality={70}
           className='w-full aspect-square object-cover'
         />
       ) : (
