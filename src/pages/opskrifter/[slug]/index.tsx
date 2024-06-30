@@ -13,6 +13,7 @@ import { RecipeCarouselViewModel } from '@/modules/RecipeCarousel/RecipeCarousel
 import { CircleArrowUp } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
+import FacebookShareButton from '@/components/ShareComponents/FacebookShareButton/FacebookShareButton';
 
 const RecipeDetails = () => {
   const router = useRouter();
@@ -109,6 +110,8 @@ const RecipeDetails = () => {
     };
   }, [isWakeLockActive]);
 
+  const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
+
   return (
     <>
       <section className='min-h-screen'>
@@ -134,7 +137,7 @@ const RecipeDetails = () => {
                 </h1>
               ) : null}
 
-              <div className='grid grid-cols-2 gap-x-10 gap-y-2 border-b md:border-0 border-accentCol pb-10 container mt-6'>
+              <div className='grid md:h-fit grid-cols-2 gap-x-10 gap-y-2 border-b md:border-0 border-accentCol pb-10 container mt-6'>
                 {recipe.totalTime ? (
                   <div>
                     <p className='opacity-75 text-accentCol'>Tid i alt:</p>
@@ -197,17 +200,22 @@ const RecipeDetails = () => {
                 <div>
                   <p className='opacity-75 text-accentCol'>Del </p>
                   <div className='flex gap-2 mt-1'>
-                    <svg
-                      width='24'
-                      height='24'
-                      fill='none'
-                      xmlns='http://www.w3.org/2000/svg'
+                    <FacebookShareButton
+                      url={shareUrl}
+                      className='cursor-pointer'
                     >
-                      <path
-                        d='M2.67 0h18.66A2.67 2.67 0 0 1 24 2.67v18.66A2.67 2.67 0 0 1 21.33 24H2.67A2.67 2.67 0 0 1 0 21.33V2.67A2.67 2.67 0 0 1 2.67 0ZM20 2.67h-3.33A4.67 4.67 0 0 0 12 7.33v3.34H9.33v4H12V24h4v-9.33h4v-4h-4V8a1.33 1.33 0 0 1 1.33-1.33H20v-4Z'
-                        fill='#99565E'
-                      />
-                    </svg>
+                      <svg
+                        width='24'
+                        height='24'
+                        fill='none'
+                        xmlns='http://www.w3.org/2000/svg'
+                      >
+                        <path
+                          d='M2.67 0h18.66A2.67 2.67 0 0 1 24 2.67v18.66A2.67 2.67 0 0 1 21.33 24H2.67A2.67 2.67 0 0 1 0 21.33V2.67A2.67 2.67 0 0 1 2.67 0ZM20 2.67h-3.33A4.67 4.67 0 0 0 12 7.33v3.34H9.33v4H12V24h4v-9.33h4v-4h-4V8a1.33 1.33 0 0 1 1.33-1.33H20v-4Z'
+                          fill='#99565E'
+                        />
+                      </svg>
+                    </FacebookShareButton>
                     <svg
                       width='24'
                       height='24'
