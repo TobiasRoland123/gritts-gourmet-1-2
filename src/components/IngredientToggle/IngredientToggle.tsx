@@ -15,14 +15,14 @@ const IngredientToggle = ({ ingredient }: IngredientToggleProps) => {
     <Checkbox
       checked={enabled}
       onChange={setEnabled}
-      className='group size-12 rounded-md last-of-type:border-b-0 data-[checked]:opacity-70 w-full flex justify-between p-4 '
+      className='group size-12 rounded-md last-of-type:border-b-0 data-[checked]:opacity-70 w-full flex justify-between h-fit p-4 gap-2'
     >
-      <span className='text-accentCol group-data-[checked]:line-through '>
+      <span className='text-accentCol group-data-[checked]:line-through block '>
         <HyphenatedText text={ingredient} />
       </span>
 
       <svg
-        className='block group-data-[checked]:hidden '
+        className='block group-data-[checked]:hidden shrink-0 '
         width='20'
         height='20'
         fill='none'
@@ -36,7 +36,7 @@ const IngredientToggle = ({ ingredient }: IngredientToggleProps) => {
         />
       </svg>
       <svg
-        className='hidden  group-data-[checked]:block '
+        className='hidden  group-data-[checked]:block shrink-0 '
         width='20'
         height='20'
         fill='none'
