@@ -217,7 +217,7 @@ const RecipeDetails = () => {
                   <div className='mt-6 flex gap-4 text-xl font-bold items-center'>
                     <Switch
                       id='keep-screen-on'
-                      className='data-[state="checked"]:bg-accentCol border-2 border-accentCol [&>span]:border-2 [&>span]:border-accentCol'
+                      className='data-[state="checked"]:bg-accentCol border-2 border-accentCol [&>span]:ring-2 [&>span]:ring-accentCol'
                     />
                     <Label htmlFor='keep-screen-on'>Hold skærmen tændt</Label>
                   </div>
