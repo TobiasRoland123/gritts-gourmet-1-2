@@ -73,6 +73,42 @@ const RecipeDetails = () => {
     getFeaturedRecipes();
   }, [slug]);
 
+  const [isWakeLockActive, setIsWakeLockActive] = useState(false);
+  let wakeLock: any = null;
+
+  useEffect(() => {
+    const requestWakeLock = async () => {
+      try {
+        if ('wakeLock' in navigator && isWakeLockActive) {
+          wakeLock = await navigator.wakeLock.request('screen');
+          wakeLock.addEventListener('release', () => {
+            console.log('Screen Wake Lock was released');
+          });
+          console.log('Screen Wake Lock is active');
+        }
+      } catch (err: any) {
+        console.error(`${err.name}, ${err.message}`);
+      }
+    };
+
+    const releaseWakeLock = () => {
+      wakeLock?.release().then(() => {
+        wakeLock = null;
+        console.log('Screen Wake Lock was released');
+      });
+    };
+
+    if (isWakeLockActive) {
+      requestWakeLock();
+    } else {
+      releaseWakeLock();
+    }
+
+    return () => {
+      releaseWakeLock();
+    };
+  }, [isWakeLockActive]);
+
   return (
     <>
       <section className='min-h-screen'>
@@ -218,6 +254,8 @@ const RecipeDetails = () => {
                     <Switch
                       id='keep-screen-on'
                       className='data-[state="checked"]:bg-accentCol border-2 border-accentCol [&>span]:ring-2 [&>span]:ring-accentCol'
+                      checked={isWakeLockActive}
+                      onClick={() => setIsWakeLockActive(!isWakeLockActive)}
                     />
                     <Label htmlFor='keep-screen-on'>Hold skærmen tændt</Label>
                   </div>
