@@ -7,5 +7,5 @@ export interface HeroFrontpageViewModel {
   description: string;
   button: ButtonViewModel;
   image: ImageViewModel;
-  notOnFrontpage: boolean;
+  notOnFrontpage?: boolean;
 }
