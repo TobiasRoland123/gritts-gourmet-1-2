@@ -2,6 +2,7 @@ import fetchEntries from '@/utils/contentFullPage';
 import HeroFrontpage from '@/modules/HeroFrontpage/HeroFrontpage';
 import React from 'react';
 import { RecipeViewModel } from '@/view-models/RecipeViewModel';
+import TextWithImage from '@/modules/TextWIthImage/TextWithImage';
 
 type AboutProps = {
   pageName: string;
@@ -15,7 +16,10 @@ const OmGritt = ({ ...props }: AboutProps) => {
 
   if (modules.length === 0) return null;
   const frontPageHeroData = modules.find((module: any) => module.sys.contentType.sys.id === 'heroFrontpage').fields;
+  const TextWithImageData = modules.find((module: any) => module.sys.contentType.sys.id === 'textMedBillede').fields;
 
+  console.log('image', TextWithImageData.billede.fields.file.url);
+  console.log('text', TextWithImageData.textFelt);
   return (
     <>
       <HeroFrontpage
@@ -24,6 +28,12 @@ const OmGritt = ({ ...props }: AboutProps) => {
           srcMobile: frontPageHeroData.image.find((img: any) => img.fields.title === 'om-gritt-mobile').fields.file.url,
           srcDesktop: frontPageHeroData.image.find((img: any) => img.fields.title === 'om-gritt-desktop').fields.file.url,
         }}
+        notOnFrontpage={true}
+      />
+
+      <TextWithImage
+        text={TextWithImageData.textFelt}
+        image={TextWithImageData.billede.fields.file.url}
       />
     </>
   );

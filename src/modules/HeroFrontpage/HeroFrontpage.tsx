@@ -2,8 +2,9 @@ import Image from 'next/image';
 import { HeroFrontpageViewModel } from './HeroFrontpageViewModel';
 import Button from '@/components/Button/Button';
 import { HyphenatedText } from '@/components/HyphenatedText/HyphenatedText';
+import { cn } from '@/lib/utils';
 
-const Hero = ({ headline, specialWord, description, button, image }: HeroFrontpageViewModel) => {
+const Hero = ({ headline, specialWord, description, button, image, notOnFrontpage }: HeroFrontpageViewModel) => {
   const renderHeader = () => {
     if (!headline) return null;
 
@@ -67,7 +68,7 @@ const Hero = ({ headline, specialWord, description, button, image }: HeroFrontpa
           </div>
         </div>
 
-        <figure className='-mt-20 md:hidden'>
+        <figure className={cn(notOnFrontpage && 'hidden', '-mt-20 md:hidden')}>
           <svg
             fill='none'
             width='100%'

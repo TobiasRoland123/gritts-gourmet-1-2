@@ -154,7 +154,7 @@ body {
 
 .container,
 .tainer {
-  @apply mx-auto w-full max-w-screen-2xl px-6;
+  @apply mx-auto w-full max-w-screen-xl px-6;
   @apply md:px-10 lg:px-16 xl:px-20;
 }
 
