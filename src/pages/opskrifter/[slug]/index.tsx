@@ -11,6 +11,8 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { RecipeCarousel } from '@/modules/RecipeCarousel/RecipeCarousel';
 import { RecipeCarouselViewModel } from '@/modules/RecipeCarousel/RecipeCarouselViewModel';
 import { CircleArrowUp } from 'lucide-react';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 
 const RecipeDetails = () => {
   const router = useRouter();
@@ -212,8 +214,14 @@ const RecipeDetails = () => {
                 </article>
                 <article className='mt-10 md:mt-0'>
                   <h2>Sådan gør du:</h2>
-
-                  <div className='px-6  max-w-prose leading-[70px] [&_p]:leading-5'>
+                  <div className='mt-6 flex gap-4 text-xl font-bold items-center'>
+                    <Switch
+                      id='keep-screen-on'
+                      className='data-[state="checked"]:bg-accentCol border-2 border-accentCol [&>span]:border-2 [&>span]:border-accentCol'
+                    />
+                    <Label htmlFor='keep-screen-on'>Hold skærmen tændt</Label>
+                  </div>
+                  <div className='px-6 mt-6 max-w-prose leading-[70px] [&_p]:leading-5'>
                     {documentToReactComponents(recipe.howTo)}
                   </div>
                 </article>
