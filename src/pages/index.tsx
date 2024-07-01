@@ -6,10 +6,6 @@ import { fetchAssets } from '../utils/getAssets';
 import { Metadata } from 'next';
 import { RecipeViewModel } from '@/view-models/RecipeViewModel';
 
-export const metadata: Metadata = {
-  title: "Gritt's Gourmet | Forside",
-};
-
 interface HomeProps {
   pageName: string;
   modules: any;

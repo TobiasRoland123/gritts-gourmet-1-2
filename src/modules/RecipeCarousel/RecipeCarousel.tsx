@@ -26,7 +26,7 @@ export function RecipeCarousel({ title, recipes, smallTitle, onRecipePage = fals
   return (
     <>
       {title && (
-        <div className='container mt-6 md:mt-16'>
+        <div className='container mt-6 md:mt-16 '>
           <h2 className={cn(smallTitle && 'text-5xl')}>{title}</h2>
         </div>
       )}
