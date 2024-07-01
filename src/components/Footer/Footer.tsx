@@ -5,7 +5,7 @@ import Image from 'next/image';
 export const Footer = () => {
   return (
     <>
-      <div className='w-full  h-80 mt-6 md:mt-10 grid grid-cols-1 relative'>
+      <footer className='w-full  h-80 mt-6 md:mt-10 grid grid-cols-1 relative'>
         <Image
           src={FooterSvg}
           height={300}
@@ -80,7 +80,7 @@ export const Footer = () => {
             </a>
           </div>
         </section>
-      </div>
+      </footer>
     </>
   );
 };

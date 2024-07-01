@@ -37,7 +37,7 @@ const RecipeCategorySearch = ({ recipes, setCleanedRecipes }: RecipeCategorySear
   }, [searchString, recipes, setCleanedRecipes]);
 
   return (
-    <div className='flex flex-col max-w-72 w-full mx-auto md:mx-0'>
+    <div className='flex flex-col md:max-w-72 w-full mx-auto md:mx-0'>
       <label
         htmlFor='recipeCategorySearch'
         className='hidden'
@@ -46,7 +46,7 @@ const RecipeCategorySearch = ({ recipes, setCleanedRecipes }: RecipeCategorySear
         Vælg kategori
       </label>
       <Select onValueChange={handleChange}>
-        <SelectTrigger className='max-w-72 bg-accentCol text-primaryCol h-10'>
+        <SelectTrigger className='bg-accentCol text-primaryCol h-10'>
           <SelectValue placeholder='Vælg Kategori' />
         </SelectTrigger>
         <SelectContent>

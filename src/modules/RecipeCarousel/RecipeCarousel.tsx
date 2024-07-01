@@ -36,13 +36,16 @@ export function RecipeCarousel({ title, recipes, smallTitle, onRecipePage = fals
         className=' mt-9 md:mt-14'
       >
         <div className='flex justify-center'>
-          <CarouselContent className='ml-6 md:ml-10 lg:ml-16 mr-4 xl:mr-0 xl:ml-auto'>
+          <CarouselContent className='ml-6 md:ml-10 lg:ml-16 mr-4 xl:mr-0 xl:ml-auto flex gap-4'>
             {recipes?.map((recipe, index) => {
               if (index >= 5) {
                 return null;
               }
               return (
-                <CarouselItem key={index}>
+                <CarouselItem
+                  key={index}
+                  className=' w-[264px] md:w-[300px]'
+                >
                   <RecipeCard
                     {...recipe}
                     onRecipePage={onRecipePage}

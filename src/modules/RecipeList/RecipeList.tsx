@@ -51,7 +51,7 @@ const RecipeList = () => {
 
   return (
     <section className='container'>
-      <div className='flex  mt-6 md:mt-10 flex-wrap gap-6'>
+      <div className='flex mt-10 md:mt-20 flex-wrap gap-6'>
         <RecipeSearch
           recipes={originalCleanedRecipes}
           setCleanedRecipes={setCleanedRecipes}
@@ -61,11 +61,11 @@ const RecipeList = () => {
           setCleanedRecipes={setCleanedRecipes}
         />
       </div>
-      <ul className='mt-6 md:mt-10 flex flex-col gap-8 md:flex-row md:flex-wrap md:justify-around lg:justify-between list-none'>
+      <ul className='mt-6 md:mt-10 flex flex-col gap-8  sm:grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 lg:justify-between md list-none'>
         {cleanedRecipes?.map((recipe, index) => (
           <li
             key={`recipe-${index}`}
-            className='mx-auto md:mx-0'
+            className='mx-auto md:mx-0 w-full'
           >
             <RecipeCard {...recipe} />
           </li>

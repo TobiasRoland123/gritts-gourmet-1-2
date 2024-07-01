@@ -37,7 +37,7 @@ const RecipeSearch = ({ recipes, setCleanedRecipes }: RecipeSearchProps) => {
   }, [searchString, recipes, setCleanedRecipes]);
 
   return (
-    <div className='flex flex-col max-w-72 w-full mx-auto md:mx-0'>
+    <div className='flex flex-col w-full md:max-w-72 w-full mx-auto md:mx-0'>
       <label
         htmlFor='recipeSearch'
         className='hidden'

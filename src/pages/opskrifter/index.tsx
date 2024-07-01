@@ -21,6 +21,7 @@ export default function Recipes({ ...props }: RecipesProps) {
           srcMobile: HeroData.image.find((img: any) => img.fields.title === 'heroBurger-mobile').fields.file.url,
           srcDesktop: HeroData.image.find((img: any) => img.fields.title === 'heroBurger-desktop').fields.file.url,
         }}
+        notOnFrontpage={true}
       />
       <RecipeList />
     </>

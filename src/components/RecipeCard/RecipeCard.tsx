@@ -19,7 +19,7 @@ export const RecipeCard = ({
   return (
     <a
       href={id ? (onRecipePage ? `${id}` : `opskrifter/${id}`) : '#'}
-      className={cn('max-w-[264px] md:max-w-[300px]  rounded-lg bg-accentCol overflow-hidden block')}
+      className={cn(' w-full max-w-full  rounded-lg bg-accentCol overflow-hidden block')}
     >
       {splashImage ? (
         <Image
@@ -34,7 +34,7 @@ export const RecipeCard = ({
         'missing image'
       )}
       <div className='px-3 py-4 '>
-        {title ? <h3 className=' text-primaryCol truncate text-2xl md:text-3xl'>{title}</h3> : null}
+        {title ? <h3 className=' text-primaryCol truncate  text-2xl md:text-3xl'>{title}</h3> : null}
         {description ? <p className='text-primaryCol mt-5 line-clamp-5'>{description};</p> : null}
         <div className='mt-6 flex justify-between'>
           {totalTime ? (
