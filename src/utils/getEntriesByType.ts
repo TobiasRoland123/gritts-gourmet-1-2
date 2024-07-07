@@ -16,7 +16,7 @@ export async function fetchEntriesByType({ type }: fetchEntryByTypeProps) {
 
   /*   console.log('response', response);
    */
-  console.log('entries', entries);
+  // console.log('entries', entries);
 
   if (entries.items) return entries.items;
 }
