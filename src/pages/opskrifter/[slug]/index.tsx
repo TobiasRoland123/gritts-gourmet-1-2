@@ -121,10 +121,10 @@ const RecipeDetails = () => {
             <Image
               src={'https:' + recipe.splashImage}
               alt='billede af retten'
-              width={1750}
+              width={1000}
               height={500}
-              className='w-full
-            '
+              quality={75}
+              className='w-full'
               priority={true}
             />
           </div>
