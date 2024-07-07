@@ -131,7 +131,7 @@ const RecipeDetails = () => {
         ) : null}
         <div className='md:container'>
           <div className='md:bg-primaryCol relative md:-mt-20 md:border-b border-accentCol md:pb-6'>
-            <div className='md:flex'>
+            <div className='md:flex items-center'>
               {recipe.title ? (
                 <h1 className='container text-center -mt-12 md:mt-0 lg:text-6xl'>
                   <HyphenatedText text={recipe.title} />
