@@ -203,6 +203,7 @@ const RecipeDetails = () => {
                     <FacebookShareButton
                       url={shareUrl}
                       className='cursor-pointer'
+                      aria-label='Del på Facebook'
                     >
                       <svg
                         width='47'
@@ -221,6 +222,7 @@ const RecipeDetails = () => {
                       url={shareUrl}
                       title={recipe.title}
                       className='Demo__some-network__share-button'
+                      aria-label='Del på Twitter'
                     >
                       <svg
                         width='48'
@@ -271,6 +273,7 @@ const RecipeDetails = () => {
                       className='data-[state="checked"]:bg-accentCol border-2 border-accentCol [&>span]:ring-2 [&>span]:ring-accentCol'
                       checked={isWakeLockActive}
                       onClick={() => setIsWakeLockActive(!isWakeLockActive)}
+                      aria-label='Hold skærmen tændt'
                     />
                     <Label htmlFor='keep-screen-on'>Hold skærmen tændt</Label>
                   </div>

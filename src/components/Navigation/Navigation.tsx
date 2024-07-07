@@ -44,6 +44,7 @@ function Navigation({ navItems }: NavigationProps) {
                   toggle={setIsOpen}
                   color='#141414'
                   rounded
+                  arial-label='Åben menu'
                 />
               </SheetTrigger>
               <SheetContent className='bg-primaryCol md:w-1/3'>
