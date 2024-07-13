@@ -6,6 +6,7 @@ import fetchAssets from '@/utils/getAssets';
 import { RecipeViewModel } from '@/view-models/RecipeViewModel';
 import RecipeSearch from '@/components/RecipeSearch/ResipeSearch';
 import RecipeCategorySearch from '@/components/RecipeCategorySearch/RecipeCategorySearch';
+import { cn } from '@/lib/utils';
 
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([] as any[]);
@@ -61,15 +62,26 @@ const RecipeList = () => {
           setCleanedRecipes={setCleanedRecipes}
         />
       </div>
-      <ul className='mt-6 md:mt-10 flex flex-col gap-8  sm:grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 lg:justify-between md list-none'>
-        {cleanedRecipes?.map((recipe, index) => (
-          <li
-            key={`recipe-${index}`}
-            className='mx-auto md:mx-0 w-full'
-          >
-            <RecipeCard {...recipe} />
-          </li>
-        ))}
+      <ul
+        className={cn(
+          'mt-6 md:mt-10 flex flex-col gap-8  grid-cols-2 md:grid-cols-3 xl:grid-cols-4 lg:justify-between md list-none',
+          cleanedRecipes?.length === 0 ? 'flex justify-center' : 'sm:grid'
+        )}
+      >
+        {cleanedRecipes?.length === 0 ? (
+          <p className='text-center mt-10 opacity-60'>
+            Vi beklager, der findes endnu ikke nogen opskrifter inden for din søgning
+          </p>
+        ) : (
+          cleanedRecipes?.map((recipe, index) => (
+            <li
+              key={`recipe-${index}`}
+              className='mx-auto md:mx-0 w-full'
+            >
+              <RecipeCard {...recipe} />
+            </li>
+          ))
+        )}
       </ul>
     </section>
   );
